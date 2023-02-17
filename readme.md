@@ -3,7 +3,7 @@ This is an example of an basic docker setup for a node api
 ### Build image:
 
     docker build -t node-api:v1 .
-
+fazf
 ## create network
 
     docker network create node-api-network
