@@ -20,5 +20,18 @@ services:
       - MYSQL_USER=dan
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=secret
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql_server
+      PMA_USER: dan
+      PMA_PASSWORD: secret
+      PMA_ARBITRARY: 1
+    ports:
+      - 8081:80
+    depends_on:
+      - mysql_server
+
 
     
