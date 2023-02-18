@@ -29,7 +29,7 @@ services:
       PMA_PASSWORD: secret
       PMA_ARBITRARY: 1
     ports:
-      - 8081:80
+      - 80:80
     depends_on:
       - mysql_server
 
