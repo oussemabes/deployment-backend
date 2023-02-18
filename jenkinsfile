@@ -13,10 +13,22 @@ pipeline {
             }
         }
 
+     stage('Docker Login'){
+            
+            steps {
+            withCredentials([usernamePassword(credentialsId: 'DockerId',passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+            sh "sudo docker login -u ${USER} -p ${PASS}"
+        }  }          
+        }
+        stage('Docker Push'){
+            steps {
+                sh "sudo docker push ${USER}/nodejsapp:${BUILD_NUMBER}"
+            }
+        }
         stage('Docker deploy'){
             steps {
                
-                sh "docker-compose up --build"
+                sh "sudo docker-compose up --build"
             }
         }
 }
