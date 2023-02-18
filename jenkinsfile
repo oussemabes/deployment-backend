@@ -20,11 +20,7 @@ pipeline {
             sh " docker login -u ${USER} -p ${PASS}"
         }  }          
         }
-        stage('Docker Push'){
-            steps {
-                sh " docker push ${USER}/nodejsapp:${BUILD_NUMBER}"
-            }
-        }
+       
         stage('Docker deploy'){
             steps {
                
