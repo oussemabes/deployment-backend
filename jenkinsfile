@@ -24,7 +24,7 @@ pipeline {
          stage('deploy to aws'){
              steps {
                 script{
-                    def shellCmd="bash ${WORKSPACE}/cmds.sh"
+                    def shellCmd="bash cmds.sh"
                     sh 'cp docker-compose.yml /tmp/'
                 //     sh "docker cp 80ed730c3be5:/tmp/docker-compose.yml /home/ec2-user"
                     sshagent(['connect-ssh']){
