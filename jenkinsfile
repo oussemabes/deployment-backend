@@ -28,7 +28,7 @@ pipeline {
                     sh 'cp docker-compose.yml /tmp/'
                 //     sh "docker cp 80ed730c3be5:/tmp/docker-compose.yml /home/ec2-user"
                     sshagent(['connect-ssh']){
-
+                        sh "scp -o StrictHostKeyChecking=no ec2-user@13.38.7.199 cmds.sh /home/ec2-user "
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@13.38.7.199 ${shellCmd} "
                     }
                 }
