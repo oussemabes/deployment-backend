@@ -11,6 +11,8 @@ services:
     depends_on: 
       - mysql_server
     restart: always
+    expose:
+      -3000
   
   mysql_server:
     image: mysql:8.0
