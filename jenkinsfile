@@ -14,12 +14,19 @@ pipeline {
             sh " docker login -u ${USER} -p ${PASS}"
         }  }          
         }
-       
-        stage('Docker deploy'){
+        stage('build image and push to dockerhub'){
             steps {
                
-                sh "docker-compose up -d"
+                sh "docker build -t oussemabes/docker-image:1.0.0 ."
+                sh "docker push oussemabes/docker-image:1.0.0"
             }
         }
+         stage('deploy to aws'){
+            steps {
+                sh "cp docker-compose.yml /tmp/"
+                sh "docker cp 80ed730c3be5:/tmp/docker-compose.yml /ec2-user/home"
+            }
+        }       
+       
 }
 }
