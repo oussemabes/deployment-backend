@@ -2,7 +2,9 @@ version: "3.8"
 
 services: 
   app:
-    image: oussemabes/docker-image:1.0.0
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports: 
       - 3000:3000
     volumes: 
@@ -10,7 +12,6 @@ services:
       - '/app/node_modules'
     depends_on: 
       - mysql_server
-    restart: always
   
   mysql_server:
     image: mysql:8.0
