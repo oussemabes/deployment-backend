@@ -23,11 +23,11 @@ pipeline {
         }
          stage('deploy to aws'){
              steps {
-            //     sh "cp docker-compose.yml /tmp/"
+                sh 'cp docker-compose.yml /tmp/'
             //     sh "docker cp 80ed730c3be5:/tmp/docker-compose.yml /home/ec2-user"
                 sshagent(['connect-ssh']){
 
-                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.38.7.199 touch /home/ec2-user/asbaaa'
+                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.38.7.199 docker cp 80ed730c3be5:/tmp/docker-compose.yml /home/ec2-user'
                 }
                 
                 
