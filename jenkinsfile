@@ -22,7 +22,7 @@ pipeline {
             }
         }
          stage('deploy to aws'){
-            // steps {
+             steps {
             //     sh "cp docker-compose.yml /tmp/"
             //     sh "docker cp 80ed730c3be5:/tmp/docker-compose.yml /home/ec2-user"
                 sshagent(credentials : ['ssh-connect']){
@@ -32,6 +32,6 @@ pipeline {
                 
             }
               
-       
+       }
 }
 }
