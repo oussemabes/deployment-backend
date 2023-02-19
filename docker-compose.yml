@@ -3,7 +3,6 @@ version: "3.8"
 services: 
   app:
     build: 
-      context: .
       image: oussemabes/docker-image:1.0.0
     ports: 
       - 3000:3000
